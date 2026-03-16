@@ -91,3 +91,24 @@ export interface CreateGoalRequest {
 export interface UpdateGoalProgressRequest {
   progress: number;
 }
+
+// Records
+export type RecordCategory = 'event' | 'conference' | 'book';
+
+export interface Record {
+  id: number;
+  category: RecordCategory;
+  title: string;
+  url: string | null;
+  date: string; // YYYY-MM-DD
+  note: string;
+  createdAt: string;
+}
+
+export interface CreateRecordRequest {
+  category: RecordCategory;
+  title: string;
+  url?: string;
+  date: string;
+  note?: string;
+}

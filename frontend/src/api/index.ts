@@ -10,6 +10,8 @@ import type {
   CreateProjectRequest,
   CreateGoalRequest,
   UpdateGoalProgressRequest,
+  Record,
+  CreateRecordRequest,
 } from '../types';
 
 // ── Calendar / Daily Logs ──────────────────────────────────────
@@ -115,4 +117,26 @@ export const syncGitHub = async (): Promise<{ synced: number }> => {
 export const adminLogin = async (password: string): Promise<{ token: string }> => {
   const { data } = await apiClient.post<{ token: string }>('/auth/login', { password });
   return data;
+};
+
+// ── Records ────────────────────────────────────────────────────
+
+export const fetchRecords = async (category?: string): Promise<Record[]> => {
+  const params = category ? { category } : {};
+  const { data } = await apiClient.get<Record[]>('/records', { params });
+  return data;
+};
+
+export const createRecord = async (req: CreateRecordRequest): Promise<Record> => {
+  const { data } = await apiClient.post<Record>('/records', req);
+  return data;
+};
+
+export const updateRecord = async (id: number, req: CreateRecordRequest): Promise<Record> => {
+  const { data } = await apiClient.put<Record>(`/records/${id}`, req);
+  return data;
+};
+
+export const deleteRecord = async (id: number): Promise<void> => {
+  await apiClient.delete(`/records/${id}`);
 };

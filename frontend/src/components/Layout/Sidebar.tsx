@@ -6,12 +6,14 @@ import {
   Activity,
   Settings,
   User,
+  BookMarked,
 } from 'lucide-react';
 
 const navItems = [
   { to: '/', icon: CalendarDays, label: 'Calendar', exact: true },
   { to: '/projects', icon: Code2, label: 'Projects' },
   { to: '/goals', icon: Target, label: 'Goals' },
+  { to: '/records', icon: BookMarked, label: 'Records' },
   { to: '/activity', icon: Activity, label: 'Activity' },
   { to: '/admin', icon: Settings, label: 'Admin' },
 ];
