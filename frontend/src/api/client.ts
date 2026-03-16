@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const BASE_URL = '/api';
+// ローカル開発: /api (Vite proxy → localhost:8080)
+// 本番 (GitHub Pages): VITE_API_BASE_URL/api (Railway backend)
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+  ? `${import.meta.env.VITE_API_BASE_URL}/api`
+  : '/api';
 
 export const apiClient = axios.create({
   baseURL: BASE_URL,

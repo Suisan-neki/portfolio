@@ -2,6 +2,8 @@ version: '3.9'
 
 services:
   backend:
+    # ローカル開発時は build: でビルド、本番では BACKEND_IMAGE を指定して pull
+    image: ${BACKEND_IMAGE:-lifelog-backend:local}
     build: ./backend
     container_name: lifelog-backend
     restart: unless-stopped
@@ -17,6 +19,8 @@ services:
       - "8080:8080"
 
   frontend:
+    # ローカル開発時は build: でビルド、本番では FRONTEND_IMAGE を指定して pull
+    image: ${FRONTEND_IMAGE:-lifelog-frontend:local}
     build: ./frontend
     container_name: lifelog-frontend
     restart: unless-stopped
