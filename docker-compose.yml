@@ -18,16 +18,16 @@ services:
     ports:
       - "8080:8080"
 
-  frontend:
-    # ローカル開発時は build: でビルド、本番では FRONTEND_IMAGE を指定して pull
-    image: ${FRONTEND_IMAGE:-lifelog-frontend:local}
-    build: ./frontend
-    container_name: lifelog-frontend
-    restart: unless-stopped
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+  # フロントエンドは GitHub Pages でホスティング (Compose Web / wasmJs)
+  # ローカル開発時のみ nginx でバックエンドへのリバースプロキシとして使う場合はコメントアウトを外す
+  # frontend:
+  #   image: nginx:alpine
+  #   container_name: lifelog-frontend-proxy
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - backend
 
 volumes:
   db_data:
