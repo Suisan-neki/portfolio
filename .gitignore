@@ -1,0 +1,26 @@
+# Gradle
+backend/.gradle/
+backend/build/
+backend/out/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Env
+.env
+.env.local
