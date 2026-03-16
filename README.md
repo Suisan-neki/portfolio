@@ -15,12 +15,13 @@ Portfolio = 技術ログ + 人生ログ
 
 | 機能 | 説明 |
 |------|------|
-| 📅 カレンダー | 月単位で活動スタンプ（🏊📚💻📝）を表示 |
-| 📝 日記 | 日次の生活ログ（Tech / Life / Thought） |
+| 📅 カレンダー | 月単位で活動スタンプ（🏊📚💻📝）を表示。日付クリックで日記へ |
+| 📝 日記 | 日次の生活ログ（Markdown対応） |
 | ✅ ルーティンログ | 水泳・資格勉強などの日次チェック |
 | 💻 GitHub Activity | コミット数をカレンダーに自動反映 |
 | 🚀 Projects | ポートフォリオ（技術スタック・GitHub・デモURL） |
-| 🎯 Goals | 目標管理と進捗表示 |
+| 🎯 Goals | 目標管理と進捗バー |
+| 📚 Records | 参加イベント・カンファレンス・読んだ技術書の時系列記録 |
 | 🌐 Activity | GitHub・Qiita・RSSの外部活動まとめ |
 
 ## 技術スタック
@@ -34,6 +35,11 @@ Portfolio = 技術ログ + 人生ログ
 - **React** + **TypeScript** + **Vite**
 - **TailwindCSS** (スタイリング)
 - **React Query** (データフェッチ)
+- **React Router** (ルーティング)
+
+### Infrastructure
+- **Docker** + **Docker Compose**
+- **nginx** (フロントエンドサーバー・リバースプロキシ)
 
 ## ディレクトリ構成
 
@@ -41,30 +47,41 @@ Portfolio = 技術ログ + 人生ログ
 portfolio/
 ├── backend/          # Ktor バックエンド
 │   └── src/main/kotlin/com/lifelog/
-│       ├── routes/   # APIルーティング
+│       ├── plugins/  # Ktor プラグイン設定
 │       ├── models/   # データモデル
-│       ├── database/ # DB設定・マイグレーション
+│       ├── database/ # DB設定・テーブル定義
 │       └── services/ # ビジネスロジック
-└── frontend/         # React フロントエンド
-    └── src/
-        ├── components/  # UIコンポーネント
-        ├── pages/       # ページコンポーネント
-        ├── hooks/       # カスタムフック
-        ├── api/         # APIクライアント
-        └── types/       # 型定義
+├── frontend/         # React フロントエンド
+│   └── src/
+│       ├── components/  # UIコンポーネント
+│       ├── pages/       # ページコンポーネント
+│       ├── api/         # APIクライアント
+│       └── types/       # 型定義
+└── docker-compose.yml
 ```
 
 ## セットアップ
 
-### Backend
+### Docker（推奨）
 
 ```bash
-cd backend
-./gradlew run
+cp .env.example .env
+# .env を編集してパスワードを設定
+
+docker-compose up -d
 ```
 
-### Frontend
+ブラウザで `http://localhost` にアクセス。
 
+### ローカル開発
+
+**Backend:**
+```bash
+cd backend
+ADMIN_PASSWORD=lifelog2024 ADMIN_TOKEN=lifelog-admin-token ./gradlew run
+```
+
+**Frontend:**
 ```bash
 cd frontend
 pnpm install
@@ -78,6 +95,23 @@ pnpm dev
 | `/` | カレンダー（メイン） |
 | `/diary/:date` | 日記詳細 |
 | `/projects` | プロジェクト一覧 |
-| `/activity` | 外部活動 |
 | `/goals` | 目標管理 |
+| `/records` | Records（イベント・カンファレンス・技術書） |
+| `/activity` | 外部活動 |
 | `/admin` | 管理画面 |
+
+## カレンダースタンプ
+
+| スタンプ | 意味 |
+|---------|------|
+| 🏊 | 水泳 |
+| 📚 | 資格勉強 |
+| 💻 | GitHub commit |
+| 📝 | 日記あり |
+
+## バックアップ
+
+```bash
+# SQLiteファイルをコピーするだけでOK
+docker cp lifelog-backend:/data/database.db ./backup/database-$(date +%Y%m%d).db
+```

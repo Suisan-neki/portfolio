@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ./backend
+    container_name: lifelog-backend
+    restart: unless-stopped
+    environment:
+      - DB_PATH=/data/database.db
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-changeme}
+      - ADMIN_TOKEN=${ADMIN_TOKEN:-changeme-token}
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+      - GITHUB_USERNAME=${GITHUB_USERNAME:-Suisan-neki}
+    volumes:
+      - db_data:/data
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    container_name: lifelog-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
