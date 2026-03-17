@@ -44,12 +44,15 @@ GitHub Actions (.github/workflows/deploy.yml)
 ```
 Railway > サービス > Variables タブ
 
-DATABASE_URL  = postgresql://... (Neon の接続文字列)
+DATABASE_URL  = postgresql://... または jdbc:postgresql://... (Neon の接続文字列)
 ADMIN_PASSWORD = Marin52291316!
 ADMIN_TOKEN   = 任意の長いランダム文字列
 GITHUB_TOKEN  = ghp_xxxx (GitHub PAT)
 GITHUB_USERNAME = Suisan-neki
 ```
+
+Neon の接続文字列は、できれば `postgresql://USER:PASSWORD@HOST/DB?sslmode=require` をそのまま入れる。
+今回の不具合は `jdbc:postgresql://USER:PASSWORD@HOST/...` のような URL でも起きないように修正済み。
 
 GitHub Actions 用は別で設定：
 ```
@@ -72,7 +75,7 @@ Secrets:
 cd backend
 
 # 環境変数を設定して起動
-DATABASE_URL="jdbc:postgresql://localhost:5432/lifelog" \
+DATABASE_URL="postgresql://localhost:5432/lifelog" \
 ADMIN_PASSWORD="test" \
 ADMIN_TOKEN="test-token" \
 ./gradlew run

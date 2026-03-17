@@ -57,6 +57,9 @@ val rawUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:5432/
 `System.getenv("DATABASE_URL")` で環境変数を読む。
 `?: "..."` は「nullだったらこの値を使う」という意味（エルビス演算子）。
 
+`DATABASE_URL` は `postgresql://...` と `jdbc:postgresql://...` の両方を受け付ける。
+ユーザー名とパスワードが URL に埋め込まれていても、起動時に JDBC 用へ正規化して接続する。
+
 `SchemaUtils.createMissingTablesAndColumns(...)` は
 「テーブルが存在しなければ作る」を自動でやってくれる。マイグレーション不要。
 
