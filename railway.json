@@ -5,7 +5,7 @@
     "buildCommand": "./gradlew :backend:shadowJar --no-daemon"
   },
   "deploy": {
-    "startCommand": "java -jar backend/build/libs/lifelog-backend-all.jar",
+    "startCommand": "java -jar backend/build/libs/app.jar",
     "restartPolicyType": "ON_FAILURE",
     "healthcheckPath": "/api/projects"
   }

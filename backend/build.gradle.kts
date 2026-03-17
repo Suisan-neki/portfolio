@@ -12,6 +12,11 @@ plugins {
 group = "com.lifelog"
 version = "0.0.1"
 
+// JAR名を固定してデプロイパスが変わらないようにする
+tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+    archiveFileName.set("app.jar")
+}
+
 application {
     mainClass.set("com.lifelog.ApplicationKt")
     val isDevelopment: Boolean = project.ext.has("development")
