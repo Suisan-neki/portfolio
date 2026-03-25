@@ -53,22 +53,3 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  # ── バックエンド: Railway にデプロイ ──────────────────────────
-  deploy-backend:
-    name: Deploy Backend (Railway)
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
-
-      - name: Deploy backend to Railway
-        run: railway up --detach
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
