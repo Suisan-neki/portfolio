@@ -17,16 +17,6 @@ tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJ
     archiveFileName.set("app.jar")
 }
 
-// フロントエンドをビルドしてバックエンドの静的リソースに含める
-val copyFrontend by tasks.registering(Copy::class) {
-    dependsOn(":frontend:wasmJsBrowserDistribution")
-    from(project(":frontend").layout.buildDirectory.dir("dist/wasmJs/productionExecutable"))
-    into(layout.buildDirectory.dir("resources/main/static"))
-}
-
-tasks.named("processResources") {
-    dependsOn(copyFrontend)
-}
 
 application {
     mainClass.set("com.lifelog.ApplicationKt")

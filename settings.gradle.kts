@@ -18,4 +18,3 @@ dependencyResolutionManagement {
 }
 
 include("backend")
-include("frontend")
