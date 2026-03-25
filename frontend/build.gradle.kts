@@ -68,4 +68,5 @@ kotlin {
 
 tasks.named("compileKotlinWasmJs") {
     dependsOn(generateApiConfig)
+    dependsOn("assembleWasmJsMainResources")
 }
