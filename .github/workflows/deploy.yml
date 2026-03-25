@@ -27,9 +27,6 @@ jobs:
       - name: Build Compose Web (wasmJs)
         working-directory: ./frontend
         run: ./gradlew wasmJsBrowserDistribution --no-daemon
-        env:
-          GRADLE_OPTS: "-Xmx4g"
-          KOTLIN_DAEMON_JVM_ARGS: "-Xmx4g"
 
       - name: Copy frontend dist to backend resources
         run: |
