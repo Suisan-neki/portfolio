@@ -106,7 +106,7 @@ fun CalendarPage(onDiaryClick: (String) -> Unit) {
             }
 
             Text(
-                text = "$year年 ${padded(month)}月",
+                text = "${year}年 ${padded(month)}月",
                 color = TextPrimary,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
