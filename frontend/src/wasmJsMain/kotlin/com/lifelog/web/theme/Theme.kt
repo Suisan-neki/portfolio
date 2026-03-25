@@ -8,8 +8,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Typography
-import lifelog.frontend.generated.resources.Res
-import lifelog.frontend.generated.resources.NotoSansJP
+import com.lifelog.web.generated.resources.Res
+import com.lifelog.web.generated.resources.NotoSansJP
 import org.jetbrains.compose.resources.Font
 
 // GitHub ダークテーマ風カラー

@@ -66,6 +66,10 @@ kotlin {
     }
 }
 
+compose.resources {
+    packageOfResClass = "com.lifelog.web.generated.resources"
+}
+
 tasks.named("compileKotlinWasmJs") {
     dependsOn(generateApiConfig)
     dependsOn("assembleWasmJsMainResources")
