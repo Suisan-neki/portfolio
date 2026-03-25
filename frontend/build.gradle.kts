@@ -40,7 +40,7 @@ kotlin {
 
     sourceSets {
         commonMain {
-            kotlin.srcDir(layout.buildDirectory.dir("generated"))
+            kotlin.srcDir(layout.buildDirectory.dir("generated/api"))
 
             dependencies {
                 implementation(compose.runtime)
