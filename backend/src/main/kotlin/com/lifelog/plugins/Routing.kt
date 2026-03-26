@@ -1,5 +1,6 @@
 package com.lifelog.plugins
 
+import com.lifelog.html.htmlRoutes
 import com.lifelog.models.*
 import com.lifelog.services.*
 import io.ktor.http.*
@@ -7,11 +8,12 @@ import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
-import io.ktor.server.http.content.*
 import io.ktor.server.routing.*
 
 fun Application.configureRouting() {
     routing {
+        htmlRoutes()
+
         route("/api") {
 
             // ── Auth ──────────────────────────────────────────────
@@ -177,11 +179,6 @@ fun Application.configureRouting() {
                     call.respond(SyncResponse(synced))
                 }
             }
-        }
-
-        // フロントエンド静的ファイルの配信
-        staticResources("/", "static") {
-            default("index.html")
         }
     }
 }

@@ -38,6 +38,8 @@ dependencies {
     implementation("io.ktor:ktor-server-auth-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-status-pages-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-call-logging-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-html-builder-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-sessions-jvm:$ktor_version")
 
     // Ktor client (for GitHub API)
     implementation("io.ktor:ktor-client-core-jvm:$ktor_version")
