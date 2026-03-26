@@ -4,13 +4,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.sp
-import androidx.compose.material3.Typography
-import com.lifelog.web.generated.resources.Res
-import com.lifelog.web.generated.resources.NotoSansJP
-import org.jetbrains.compose.resources.Font
 
 // GitHub ダークテーマ風カラー
 val BgPrimary    = Color(0xFF0d1117)
@@ -41,24 +34,9 @@ private val DarkColors = darkColorScheme(
 )
 
 @Composable
-fun notoSansJP() = FontFamily(Font(Res.font.NotoSansJP))
-
-@Composable
 fun PortfolioTheme(content: @Composable () -> Unit) {
-    val fontFamily = notoSansJP()
-    val typography = Typography(
-        bodyLarge   = TextStyle(fontFamily = fontFamily, fontSize = 16.sp),
-        bodyMedium  = TextStyle(fontFamily = fontFamily, fontSize = 14.sp),
-        bodySmall   = TextStyle(fontFamily = fontFamily, fontSize = 12.sp),
-        labelLarge  = TextStyle(fontFamily = fontFamily, fontSize = 14.sp),
-        labelMedium = TextStyle(fontFamily = fontFamily, fontSize = 12.sp),
-        titleLarge  = TextStyle(fontFamily = fontFamily, fontSize = 22.sp),
-        titleMedium = TextStyle(fontFamily = fontFamily, fontSize = 16.sp),
-        titleSmall  = TextStyle(fontFamily = fontFamily, fontSize = 14.sp),
-    )
     MaterialTheme(
         colorScheme = DarkColors,
-        typography = typography,
         content = content,
     )
 }
