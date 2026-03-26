@@ -179,10 +179,9 @@ fun Application.configureRouting() {
             }
         }
 
-        // フロントエンド静的ファイルの配信 (SPA フォールバック付き)
-        staticResources("/", "static")
-        get("{...}") {
-            call.respondRedirect("/")
+        // フロントエンド静的ファイルの配信
+        staticResources("/", "static") {
+            default("index.html")
         }
     }
 }
