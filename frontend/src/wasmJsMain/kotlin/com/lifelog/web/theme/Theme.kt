@@ -4,6 +4,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
 
 // GitHub ダークテーマ風カラー
 val BgPrimary    = Color(0xFF0d1117)
@@ -16,6 +17,8 @@ val AccentBlue   = Color(0xFF58a6ff)
 val AccentGreen  = Color(0xFF3fb950)
 val AccentPurple = Color(0xFFbc8cff)
 val AccentRed    = Color(0xFFf78166)
+
+private val NotoSansJP = FontFamily("Noto Sans JP")
 
 private val DarkColors = darkColorScheme(
     primary         = AccentBlue,
@@ -37,6 +40,16 @@ private val DarkColors = darkColorScheme(
 fun PortfolioTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = DarkColors,
+        typography = androidx.compose.material3.Typography(
+            bodyLarge   = androidx.compose.ui.text.TextStyle(fontFamily = NotoSansJP),
+            bodyMedium  = androidx.compose.ui.text.TextStyle(fontFamily = NotoSansJP),
+            bodySmall   = androidx.compose.ui.text.TextStyle(fontFamily = NotoSansJP),
+            labelLarge  = androidx.compose.ui.text.TextStyle(fontFamily = NotoSansJP),
+            labelMedium = androidx.compose.ui.text.TextStyle(fontFamily = NotoSansJP),
+            titleLarge  = androidx.compose.ui.text.TextStyle(fontFamily = NotoSansJP),
+            titleMedium = androidx.compose.ui.text.TextStyle(fontFamily = NotoSansJP),
+            titleSmall  = androidx.compose.ui.text.TextStyle(fontFamily = NotoSansJP),
+        ),
         content = content,
     )
 }
