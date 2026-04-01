@@ -6,7 +6,7 @@ import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
-fun BODY.calendarContent(year: Int, month: Int, logs: List<DailyLog>) {
+fun DIV.calendarContent(year: Int, month: Int, logs: List<DailyLog>) {
     val yearMonth = YearMonth.of(year, month)
     val firstDay = yearMonth.atDay(1)
     val daysInMonth = yearMonth.lengthOfMonth()
@@ -85,7 +85,7 @@ fun BODY.calendarContent(year: Int, month: Int, logs: List<DailyLog>) {
     }
 }
 
-fun BODY.projectsContent(projects: List<Project>) {
+fun DIV.projectsContent(projects: List<Project>) {
     div(classes = "page-header") {
         div(classes = "page-title") { +"Projects" }
         div(classes = "page-subtitle") { +"${projects.size} projects" }
@@ -125,7 +125,7 @@ fun BODY.projectsContent(projects: List<Project>) {
     }
 }
 
-fun BODY.goalsContent(goals: List<Goal>) {
+fun DIV.goalsContent(goals: List<Goal>) {
     div(classes = "page-header") {
         div(classes = "page-title") { +"Goals" }
         div(classes = "page-subtitle") { +"${goals.size} goals" }
@@ -155,7 +155,7 @@ fun BODY.goalsContent(goals: List<Goal>) {
     }
 }
 
-fun BODY.activityContent(activities: List<ExternalActivity>) {
+fun DIV.activityContent(activities: List<ExternalActivity>) {
     div(classes = "page-header") {
         div(classes = "page-title") { +"Activity" }
         div(classes = "page-subtitle") { +"Recent external activity" }
@@ -182,7 +182,7 @@ fun BODY.activityContent(activities: List<ExternalActivity>) {
     }
 }
 
-fun BODY.recordsContent(records: List<Record>) {
+fun DIV.recordsContent(records: List<Record>) {
     val categories = listOf("event" to "Events", "conference" to "Conferences", "book" to "Books")
 
     div(classes = "page-header") {
@@ -228,7 +228,7 @@ fun BODY.recordsContent(records: List<Record>) {
     }
 }
 
-fun BODY.adminContent(isAdmin: Boolean, diaries: List<Diary> = emptyList()) {
+fun DIV.adminContent(isAdmin: Boolean, diaries: List<Diary> = emptyList()) {
     if (!isAdmin) {
         script {
             unsafe { raw("window.location.href = '/login';") }
@@ -271,7 +271,7 @@ fun BODY.adminContent(isAdmin: Boolean, diaries: List<Diary> = emptyList()) {
     }
 }
 
-fun BODY.loginContent(error: String? = null) {
+fun DIV.loginContent(error: String? = null) {
     div(classes = "login-container") {
         div(classes = "page-header") {
             div(classes = "page-title") { +"Login" }

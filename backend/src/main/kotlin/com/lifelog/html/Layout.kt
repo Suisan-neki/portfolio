@@ -3,7 +3,7 @@ package com.lifelog.html
 import io.ktor.server.html.*
 import kotlinx.html.*
 
-fun HTML.portfolioLayout(currentPage: String, pageTitle: String = "Portfolio", content: BODY.() -> Unit) {
+fun HTML.portfolioLayout(currentPage: String, pageTitle: String = "Portfolio", content: DIV.() -> Unit) {
     head {
         meta(charset = "UTF-8")
         meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
